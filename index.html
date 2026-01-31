@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Letter 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe Script', cursive;
+        overflow: hidden;
+    }
+
+    .letter-box {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        width: 420px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    h2 {
+        color: #e84393;
+        margin-bottom: 15px;
+    }
+
+    .text {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.6;
+        border-right: 2px solid #e84393;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 6s steps(120) forwards, blink 0.7s infinite;
+    }
+
+    .question {
+        margin-top: 25px;
+        font-size: 18px;
+        color: #d63384;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+        animation-delay: 6.5s;
+    }
+
+    .buttons {
+        margin-top: 15px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+        animation-delay: 7.5s;
+    }
+
+    button {
+        padding: 10px 25px;
+        margin: 5px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .no {
+        background: #adb5bd;
+        color: white;
+    }
+
+    .answer {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #e84393;
+        display: none;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="letter-box">
+    <h2>💌 My Love</h2>
+
+    <div class="text">
+        Tum meri zindagi ka wo hissa ho jiske bina sab adhoora lagta hai.
+        Har khushi tumse judi hai.
+        I love you endlessly ❤️
+    </div>
+
+    <div class="question">
+        🌸 Kya tum bhi mujhse saccha pyaar karte ho?
+    </div>
+
+    <div class="buttons">
+        <button class="yes" onclick="answerYes()">YES 💖</button>
+        <button class="no" onclick="answerNo()">NO 🙈</button>
+    </div>
+
+    <div class="answer" id="answerText"></div>
+</div>
+
+<script>
+    function answerYes() {
+        const ans = document.getElementById("answerText");
+        ans.style.display = "block";
+        ans.innerHTML = "💞 Mujhe pata tha! Tumhara YES meri duniya hai 😍";
+    }
+
+    function answerNo() {
+        const ans = document.getElementById("answerText");
+        ans.style.display = "block";
+        ans.innerHTML = "😢 Thoda sa soch lo… shayad dil YES keh raha ho 💕";
+    }
+
+    // Floating hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 400);
+</script>
+
+</body>
+</html>
